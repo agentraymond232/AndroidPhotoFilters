@@ -4,5 +4,5 @@ APP_CPPFLAGS += -frtti
 APP_CPPFLAGS += -fexceptions
 APP_CPPFLAGS += -DANDROID
 APP_OPTIM := release
-APP_PLATFORM=android-8
+APP_PLATFORM=android-16
 LOCAL_ARM_MODE := thumb

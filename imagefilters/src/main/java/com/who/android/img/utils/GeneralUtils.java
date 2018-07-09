@@ -1,8 +1,13 @@
-package com.zomato.photofilters.utils;
+package com.who.android.img.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Path;
+
+import com.who.android.img.NativeImageProcessor;
+
+import org.opencv.android.Utils;
+import org.opencv.core.Mat;
 
 /**
  * @author Varun on 30/06/15.
@@ -12,7 +17,7 @@ public final class GeneralUtils {
     private GeneralUtils() {
     }
 
-    public static Bitmap generateCircularBitmap(Bitmap input) {
+    public static Bitmap generateCircularBitmap( final Bitmap input) {
 
         final int width = input.getWidth();
         final int height = input.getHeight();
@@ -30,6 +35,15 @@ public final class GeneralUtils {
         canvas.clipPath(path);
         canvas.drawBitmap(input, 0, 0, null);
         return outputBitmap;
+    }
+
+    public static Mat fromBitmap( final Bitmap bitmap){
+        if( null == bitmap || bitmap.isRecycled()) return null;
+
+        final Mat mat = new Mat();
+        Utils.bitmapToMat(bitmap, mat);
+
+        return mat;
     }
 
 }
